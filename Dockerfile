@@ -36,7 +36,12 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/root/.local/bin:$PATH"
 
 # Install Python dependencies
-COPY pyproject.toml uv.lock README.md .python-version LICENSE.md patches.pth .
+COPY pyproject.toml pyproject.toml
+COPY uv.lock uv.lock
+COPY README.md README.md
+COPY .python-version .python-version
+COPY LICENSE.md LICENSE.md
+COPY patches.pth patches.pth
 RUN uv sync --frozen
 
 # Build frontend
